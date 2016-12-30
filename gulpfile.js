@@ -28,6 +28,15 @@ gulp.task('webserver', function() {
 });
 
 gulp.task('typescript', function() {
+
+  // console.log('typescriptngapp  first ...');
+  //  gulp.src('./process/typescript/*.ts')
+  //   .pipe(sourcemaps.init())
+  //   .pipe(typescript(tsconfig.compilerOptions))
+  //   .pipe(sourcemaps.write('.'))
+  //   .pipe(gulp.dest('./app/' ));
+
+
   console.log('typescript ...');
   gulp.src(tsSrc)
     .pipe(sourcemaps.init())
@@ -35,6 +44,19 @@ gulp.task('typescript', function() {
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('./app/js/' ));
 });
+
+
+
+
+// gulp.task('typescriptngapp', function() {
+//   console.log('typescriptngapp ...');
+//    gulp.src('./process/typescript/*.ts')
+//     .pipe(sourcemaps.init())
+//     .pipe(typescript(tsconfig.compilerOptions))
+//     .pipe(sourcemaps.write('.'))
+//     .pipe(gulp.dest('./app/' ));
+// });
+
 
 gulp.task('copylibs', function() {
   console.log('copylibs ...');
@@ -60,9 +82,10 @@ gulp.task('watch', function() {
 	// watch for JS changes
   console.log('watch...');
 	  gulp.watch(tsSrc, ['typescript']);
+    gulp.watch('./process/css/*.css', ['css']);
 });
 
-gulp.task('default',['copylibs','css','typescript','watch','webserver', ], function() {
+gulp.task('default',['copylibs','css','typescript','watch','webserver' ], function() {
   // place code for your default task here
   console.log('Hello Chidra again 1');
 });
